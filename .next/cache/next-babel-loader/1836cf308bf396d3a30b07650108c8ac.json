@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport styles from '../styles/Section.module.css';\nexport default function Layout(_ref) {\n  var children = _ref.children;\n  return __jsx(\"div\", {\n    className: styles.main\n  }, children);\n}","map":null,"metadata":{},"sourceType":"module"}
