@@ -10,7 +10,7 @@ const Panel = ({ title, text }) => {
                     fontFamily: 'Permanent Marker, cursive',
                     whiteSpace: 'nowrap',
                     margin: '10px 0px',
-                    color: '#3b5998',
+                    color: '#2e2e2e',
                 }}
             >
                 {title}
@@ -23,7 +23,7 @@ const Panel = ({ title, text }) => {
                             fontSize: 20,
                             letterSpacing: 2,
                             lineHeight: '1.4',
-                            textAlign: 'left',
+                            textAlign: 'justify',
                         }}
                     >
                         {text}{' '}

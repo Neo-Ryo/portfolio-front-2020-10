@@ -5,7 +5,6 @@
 
 .linkAbout {
     text-align: center;
-
     transition: 0.5s transform;
     text-decoration: none;
 }
@@ -16,6 +15,9 @@
 
 .linkAbout a {
     text-decoration: none;
+    color: #2e2e2e;
     font-size: 40px;
     font-family: 'Permanent Marker', cursive;
 }
+
+

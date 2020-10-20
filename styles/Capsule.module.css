@@ -43,7 +43,7 @@
     background: transparent;
     animation: float 5s ease-in-out infinite;
     border-radius: 65px;
-    border: 3px solid rgb(29, 28, 28);
+    border: 3px solid rgb(255, 54, 54);
     box-shadow: 2px 2px 2px rgba(60, 0, 0, 0.6);
 }
 
@@ -53,8 +53,8 @@
     height: 100%;
     border-top-left-radius: 65px;
     border-bottom-left-radius: 65px;
-    border-right: solid 1px black;
-    background-color: #3a61b4;
+    border-right: solid 1px rgb(255, 54, 54);
+    background-color: #2e2e2e;
 }
 
 .left p {
@@ -67,7 +67,7 @@
     height: 100%;
     border-top-right-radius: 65px;
     border-bottom-right-radius: 65px;
-    border-left: solid 1px black;
+    border-left: solid 1px rgb(255, 54, 54);
 }
 
 .capsule .picture {
@@ -77,7 +77,7 @@
 
 .capsule p {
     margin: 10%;
-    color: black;
+    color: whitesmoke;
 }
 
 .capsule:hover {

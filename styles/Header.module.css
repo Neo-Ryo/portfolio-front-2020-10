@@ -1,22 +1,21 @@
 .wrapperLayout {
-    /* background: rgb(255, 255, 255); */
-    background: center / cover url('/images/white-waves.jpg');
+    background: center / cover url('/images/19366.jpg');
     font-family: 'Raleway', sans-serif;
 }
 
 .header {
     display: flex;
     flex-direction: column;
-    background: center / cover url('../public/images/892.jpg');
+    background: center / cover url('../public/images/blue-future.jpg');
     padding-top: 5px;
     margin: 0;
     height: 140px;
-    border-bottom: 4px solid rgb(51, 51, 51);
+    border-bottom: 4px solid rgb(255, 255, 255);
 }
 
 .headerPic {
     margin: 32px auto;
-    border: 4px solid rgb(51, 51, 51);
+    border: 4px solid rgb(250, 249, 249);
     width: 200px;
     border-radius: 100%;
 }

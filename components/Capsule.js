@@ -18,7 +18,7 @@ export default function Capsule({
                     <img className={styles.right} src={picture} alt={title} />{' '}
                 </div>
             </a>
-            <p style={{ fontSize: 20, color: 'black', marginTop: 20 }}>
+            <p style={{ fontSize: 20, color: 'black', marginTop: 20, textAlign: 'justify' }}>
                 {description}
             </p>
         </>
