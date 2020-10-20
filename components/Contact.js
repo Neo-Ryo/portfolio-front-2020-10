@@ -1,0 +1,116 @@
+import Axios from 'axios'
+import React, { useState } from 'react'
+import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
+import url from '../lib/url'
+import Alert from './Alert'
+
+export default function Contact(props) {
+    const [email, setEmail] = useState({ name: '', text: '' })
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [emailSent, setEmailSent] = useState(false)
+
+    function emailIsValid(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }
+
+    const handleMails = async (e) => {
+        const { name, text } = email
+        if (emailIsValid(name)) {
+            e.preventDefault()
+            await Axios.post(`${url}/email`, {
+                emailFrom: name,
+                subject: `Email Portfolio de la part de: ${name}`,
+                message: text,
+            })
+            setEmailSent(true)
+        } else {
+            e.preventDefault()
+            setIsDisabled(true)
+        }
+    }
+
+    const handleName = (e) => {
+        setEmail({ ...email, name: e.target.value })
+        setIsDisabled(false)
+    }
+
+    const handleText = (e) => {
+        setEmail({ ...email, text: e.target.value })
+    }
+
+    return (
+        <>
+            <Row style={{ margin: '20px 0' }}>
+                <Col></Col>
+                <Col sm={10} md={8} lg={6} style={{ textAlign: 'center' }}>
+                    <Form onSubmit={(e) => handleMails(e)}>
+                        <FormGroup>
+                            <Label
+                                style={{
+                                    color: '#3b5998',
+                                    fontSize: 18,
+                                }}
+                                for="email"
+                            >
+                                <b>Email adress</b>
+                            </Label>
+                            <Input
+                                style={{
+                                    fontSize: 20,
+                                    fontWeight: 700,
+                                }}
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="name@email.com"
+                                onChange={(e) => handleName(e)}
+                            />
+                            {isDisabled ? (
+                                <Alert color="danger" message="email invalid" />
+                            ) : (
+                                ''
+                            )}
+                        </FormGroup>
+                        <FormGroup>
+                            <Label
+                                style={{ color: '#3b5998', fontSize: 18 }}
+                                for="comment"
+                            >
+                                <b>Message</b>
+                            </Label>
+                            <Input
+                                style={{
+                                    fontSize: 20,
+                                    fontWeight: 700,
+                                    height: '20vh',
+                                }}
+                                placeholder="your message"
+                                type="textarea"
+                                name="comment"
+                                id="comment"
+                                onChange={(e) => handleText(e)}
+                            />
+                        </FormGroup>
+                        <Button disabled={isDisabled} color="primary">
+                            Submit
+                        </Button>
+                    </Form>
+                </Col>
+                <Col></Col>
+            </Row>
+            {emailSent ? (
+                <Row>
+                    <Col
+                        sm={{ size: 4, offset: 4 }}
+                        md={{ size: 4, offset: 4 }}
+                        lg={{ size: 4, offset: 4 }}
+                    >
+                        <Alert color="success" message="eMail sent!" />
+                    </Col>
+                </Row>
+            ) : (
+                ''
+            )}
+        </>
+    )
+}

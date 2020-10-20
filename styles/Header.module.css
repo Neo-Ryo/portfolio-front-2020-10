@@ -1,0 +1,22 @@
+.wrapperLayout {
+    /* background: rgb(255, 255, 255); */
+    background: center / cover url('/images/white-waves.jpg');
+    font-family: 'Raleway', sans-serif;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    background: center / cover url('../public/images/892.jpg');
+    padding-top: 5px;
+    margin: 0;
+    height: 140px;
+    border-bottom: 4px solid rgb(51, 51, 51);
+}
+
+.headerPic {
+    margin: 32px auto;
+    border: 4px solid rgb(51, 51, 51);
+    width: 200px;
+    border-radius: 100%;
+}

@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    width: 70vw;
+    margin: 50px auto;
+}
+
+.iconTech {
+    filter: grayscale(50%);
+    transition: transform 0.2s;
+}
+
+.iconTech:hover {
+    filter: none;
+    transform: scale(1.5);
+}

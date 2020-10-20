@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    width: 90vw;
+    margin: 30px auto;
+}
+
+.splitter {
+    width: 40vw;
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+}
