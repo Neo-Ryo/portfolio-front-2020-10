@@ -18,7 +18,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 export async function getServerSideProps() {
     const res = await Axios.get(`${url}/api/counts`)
-    const { views, likes } = res.data
+    const { views, likes } = res.data[0]
     return { props: { views, likes } }
 }
 
