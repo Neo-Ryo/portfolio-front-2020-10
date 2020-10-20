@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport { Alert } from 'reactstrap';\nexport default function Alerting({\n  color,\n  message\n}) {\n  return __jsx(Alert, {\n    color: color\n  }, message);\n}","map":null,"metadata":{},"sourceType":"module"}
