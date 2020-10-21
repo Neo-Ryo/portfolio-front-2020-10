@@ -48,7 +48,6 @@ const techArray = [
 export default function TechSection() {
     return (
         <Row style={{ margin: '50px 0' }}>
-            <Col></Col>
             {techArray.map((it, k) => (
                 <Col style={{ textAlign: 'center' }} key={it.name}>
                     <TechIcon
@@ -59,7 +58,6 @@ export default function TechSection() {
                     />
                 </Col>
             ))}
-            <Col></Col>
         </Row>
     )
 }
