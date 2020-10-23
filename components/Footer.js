@@ -3,8 +3,9 @@ import Axios from 'axios'
 import { Badge, Button, Col, Row } from 'reactstrap'
 import url from '../lib/url'
 import Alert from './Alert'
+import translate from '../utils/translate'
 
-export default function Footer({ views, likes }) {
+export default function Footer({ language, views, likes }) {
     const [liked, setLiked] = useState(false)
 
     const handleLikes = (e) => {
@@ -42,7 +43,7 @@ export default function Footer({ views, likes }) {
                     }}
                 >
                     <p style={{ color: '#ffc107', fontSize: 22 }}>
-                        This website is made with love and Next.js by Marc S.
+                        {translate(language, 'footer-text')}
                     </p>
                 </Col>
                 <Col

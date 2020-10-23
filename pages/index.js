@@ -1,20 +1,31 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useEffect, useState } from 'react'
+import {
+    Col,
+    Row,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+} from 'reactstrap'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import TechSection from '../components/TechSection'
 import Splitter from '../components/Splitter'
 import Panels from '../components/Panels'
-import Projects from '../components/Projects'
-import { Col, Row } from 'reactstrap'
+import Capsule from '../components/Capsule'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import AboutMe from '../components/AboutMe'
-import { useEffect } from 'react'
-import panelTexts from '../lib/panelTexts'
+import panelTextsEn from '../lib/panelTextsEn'
+import panelTextsFr from '../lib/panelTextsFr'
+import projectsDataEn from '../lib/projectsDataEn'
+import projectsDataFr from '../lib/projectsDataFr'
 import Axios from 'axios'
 import url from '../lib/url'
 import { v4 as uuidv4 } from 'uuid'
+import translate from '../utils/translate'
 
 export async function getServerSideProps() {
     const res = await Axios.get(`${url}/api/counts`)
@@ -23,6 +34,29 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ views, likes }) {
+    const [language, setLanguage] = useState('fr')
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const toggle = () => setDropdownOpen((prevState) => !prevState)
+    const handleChange = (e) => {
+        setLanguage(e.target.value)
+    }
+
+    const panelSelector = () => {
+        if (language === 'en') {
+            return panelTextsEn
+        } else {
+            return panelTextsFr
+        }
+    }
+
+    const projectSelector = () => {
+        if (language === 'en') {
+            return projectsDataEn
+        } else {
+            return projectsDataFr
+        }
+    }
+
     useEffect(() => {
         const user = sessionStorage.getItem('uuidCheckingPortfolio')
         if (!user) {
@@ -30,7 +64,7 @@ export default function Home({ views, likes }) {
             sessionStorage.setItem('uuidCheckingPortfolio', uuid)
             Axios.put(`${url}/api/counts/views`)
         }
-    }, [])
+    }, [language])
 
     return (
         <Layout>
@@ -41,19 +75,31 @@ export default function Home({ views, likes }) {
                     rel="stylesheet"
                 />
             </Head>
+            <Dropdown
+                style={{ margin: '25px 50px' }}
+                isOpen={dropdownOpen}
+                toggle={toggle}
+            >
+                <DropdownToggle caret>{language}</DropdownToggle>
+                <DropdownMenu>
+                    <DropdownItem onClick={(e) => handleChange(e)} value="fr">
+                        fr
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={(e) => handleChange(e)} value="en">
+                        en
+                    </DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
             <Section>
                 <p style={{ margin: '100px' }}>
-                    Hi, I'm Marc and I'm a fullstack developper who loves to
-                    create usefull apps to improve people's life. Even though
-                    I'm quite at the beginnig of my journey, I feel like I can
-                    accomplish anything with my skills and the things I learn
-                    every days.
+                    {translate(language, 'introduction')}
                 </p>
             </Section>
             <TechSection />
             <Splitter>Description</Splitter>
             <Row style={{ margin: 0 }}>
-                {panelTexts.map((item, k) => (
+                {panelSelector().map((item, k) => (
                     <Col
                         sm={12}
                         md={6}
@@ -65,13 +111,27 @@ export default function Home({ views, likes }) {
                     </Col>
                 ))}
             </Row>
-            <Splitter>My projects</Splitter>
-            <Projects />
-            <Splitter>Links</Splitter>
-            <AboutMe />
-            <Splitter>Contact me</Splitter>
-            <Contact />
-            <Footer views={views} likes={likes} />
+            <Splitter>{translate(language, 'my-projects')}</Splitter>
+            <Row style={{ margin: 0 }}>
+                {projectSelector().map((it, k) => (
+                    <Col style={{ textAlign: 'center' }} key={k}>
+                        <Capsule
+                            picture={it.picture}
+                            title={it.title}
+                            key={it.title}
+                            link={it.link}
+                            target={it.target}
+                            rel={it.rel}
+                            description={it.description}
+                        />
+                    </Col>
+                ))}
+            </Row>
+            <Splitter>{translate(language, 'links')}</Splitter>
+            <AboutMe language={language} />
+            <Splitter>{translate(language, 'contact-me')}</Splitter>
+            <Contact language={language} />
+            <Footer language={language} views={views} likes={likes} />
         </Layout>
     )
 }

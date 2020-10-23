@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardBody, Card, CardHeader, CardText } from 'reactstrap'
+import { CardBody, Card, CardText } from 'reactstrap'
 
 const Panel = ({ title, text }) => {
     return (

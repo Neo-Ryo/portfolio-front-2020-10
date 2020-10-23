@@ -1,0 +1,12 @@
+{
+    "introduction": "Salut, je m'appel Marc et je suis un developpeur fullstack qui adore créer des applications utiles pour améliorer la vie des gens. Bien que je ne sois qu'aux prémisses de mon voyage, je sens que je suis capable de tout réaliser avec mes compétences et ce que j'apprends tout les jours.",
+    "links": "Liens",
+    "my-projects": "Mes projets",
+    "contact-me": "Me contacter",
+    "panel-text-titre-1": "Mes origines",
+    "submit": "Envoyer",
+    "github": "profile github",
+    "resume": "Curiculum Vitae",
+    "linkedin": "profile linkedin",
+    "footer-text": "Ce site web à été réalisé avec amour et Next.js"
+}

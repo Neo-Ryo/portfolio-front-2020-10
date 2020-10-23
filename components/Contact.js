@@ -2,9 +2,10 @@ import Axios from 'axios'
 import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
 import url from '../lib/url'
+import translate from '../utils/translate'
 import Alert from './Alert'
 
-export default function Contact(props) {
+export default function Contact({ language }) {
     const [email, setEmail] = useState({ name: '', text: '' })
     const [isDisabled, setIsDisabled] = useState(false)
     const [emailSent, setEmailSent] = useState(false)
@@ -92,7 +93,7 @@ export default function Contact(props) {
                             />
                         </FormGroup>
                         <Button disabled={isDisabled} color="primary">
-                            Submit
+                            {translate(language, 'submit')}
                         </Button>
                     </Form>
                 </Col>

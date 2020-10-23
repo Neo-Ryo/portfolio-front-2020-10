@@ -1,7 +1,8 @@
-import { Container, Row, Col, Button } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import styles from '../styles/AboutMe.module.css'
+import translate from '../utils/translate'
 
-export default function AboutMe() {
+export default function AboutMe({ language }) {
     return (
         <Row className={styles.rowWrap}>
             <Col
@@ -15,7 +16,7 @@ export default function AboutMe() {
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                 >
-                    Github profile
+                    {translate(language, 'github')}
                 </a>
             </Col>
             <Col
@@ -24,7 +25,7 @@ export default function AboutMe() {
                 lg={{ size: 4 }}
                 className={styles.linkAbout}
             >
-                <a href="/my-cv">resume</a>
+                <a href="/my-cv">{translate(language, 'resume')}</a>
             </Col>
             <Col
                 sm={{ size: 12 }}
@@ -37,7 +38,7 @@ export default function AboutMe() {
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                 >
-                    Linkedin profile
+                    {translate(language, 'linkedin')}
                 </a>
             </Col>
         </Row>
