@@ -1,5 +1,5 @@
-import Axios from 'axios'
 import React, { useState } from 'react'
+import Axios from 'axios'
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
 import url from '../lib/url'
 import translate from '../utils/translate'
@@ -14,12 +14,13 @@ export default function Contact({ language }) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
-    const handleMails = async (e) => {
+    const handleMails = (e) => {
         const { name, text } = email
         if (emailIsValid(name)) {
             e.preventDefault()
-            await Axios.post(`${url}/email`, {
+            Axios.post(`${url}/email`, {
                 emailFrom: name,
+                emailTo: 'marco.sch4064@gmail.com',
                 subject: `Email Portfolio de la part de: ${name}`,
                 message: text,
             })
@@ -92,7 +93,11 @@ export default function Contact({ language }) {
                                 onChange={(e) => handleText(e)}
                             />
                         </FormGroup>
-                        <Button disabled={isDisabled} color="primary">
+                        <Button
+                            type="submit"
+                            disabled={isDisabled}
+                            color="primary"
+                        >
                             {translate(language, 'submit')}
                         </Button>
                     </Form>
