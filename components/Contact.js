@@ -60,7 +60,7 @@ export default function Contact({ language }) {
                                     fontSize: 20,
                                     fontWeight: 700,
                                 }}
-                                type="text"
+                                type="email"
                                 name="name"
                                 id="name"
                                 placeholder="name@email.com"
