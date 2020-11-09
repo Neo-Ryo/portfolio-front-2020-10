@@ -20,7 +20,6 @@ export default function Contact({ language }) {
             e.preventDefault()
             Axios.post(`${url}/email`, {
                 emailFrom: name,
-                emailTo: 'marco.sch4064@gmail.com',
                 subject: `Email Portfolio de la part de: ${name}`,
                 message: text,
             })
