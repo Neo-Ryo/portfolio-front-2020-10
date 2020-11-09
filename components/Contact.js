@@ -45,14 +45,14 @@ export default function Contact({ language }) {
             <Row>
                 <Col></Col>
                 <Col>
-                    <Alert
+                    {/* <Alert
                         color="warning"
                         message="This section is currently not working, it will soon, sorry."
-                    />
+                    /> */}
                 </Col>
                 <Col></Col>
             </Row>
-            <Row style={{ margin: '20px 0', background: 'red' }}>
+            <Row style={{ margin: '20px 0' }}>
                 <Col></Col>
                 <Col sm={10} md={8} lg={6} style={{ textAlign: 'center' }}>
                     <Form onSubmit={(e) => handleMails(e)}>
@@ -71,7 +71,6 @@ export default function Contact({ language }) {
                                     fontSize: 20,
                                     fontWeight: 700,
                                 }}
-                                disabled
                                 type="email"
                                 name="name"
                                 id="name"
@@ -97,7 +96,6 @@ export default function Contact({ language }) {
                                     fontWeight: 700,
                                     height: '20vh',
                                 }}
-                                disabled
                                 placeholder="your message"
                                 type="textarea"
                                 name="comment"
@@ -107,8 +105,7 @@ export default function Contact({ language }) {
                         </FormGroup>
                         <Button
                             type="submit"
-                            disabled
-                            // disabled={isDisabled}
+                            disabled={isDisabled}
                             color="primary"
                         >
                             {translate(language, 'submit')}
